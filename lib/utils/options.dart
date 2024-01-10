@@ -136,7 +136,6 @@ class HtmlToolbarOptions {
       StyleButtons(),
       FontSettingButtons(fontSizeUnit: false),
       FontButtons(clearAll: false),
-      CustomWidget(icon: Icon(Icons.add)),
       ColorButtons(),
       ListButtons(listStyles: false),
       ParagraphButtons(

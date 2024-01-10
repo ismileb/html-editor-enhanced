@@ -65,16 +65,6 @@ class FontButtons extends Toolbar {
   }
 }
 
-class CustomWidget extends Toolbar {
-  final Icon? icon;
-  final Widget? widget;
-
-  const CustomWidget({
-    this.icon,
-    this.widget,
-  });
-
-}
 
 /// Color bar group
 class ColorButtons extends Toolbar {
