@@ -154,6 +154,7 @@ class InsertButtons extends Toolbar {
   final bool otherFile;
   final bool table;
   final bool hr;
+  final bool customAdd;
 
   const InsertButtons({
     this.link = true,
@@ -161,6 +162,7 @@ class InsertButtons extends Toolbar {
     this.audio = true,
     this.video = true,
     this.otherFile = false,
+    this.customAdd = false,
     this.table = true,
     this.hr = true,
   });
@@ -174,6 +176,7 @@ class InsertButtons extends Toolbar {
     if (otherFile) icons.add(Icon(Icons.attach_file));
     if (table) icons.add(Icon(Icons.table_chart_outlined));
     if (hr) icons.add(Icon(Icons.horizontal_rule));
+    if (customAdd) icons.add(Icon(Icons.dashboard_customize));
     return icons;
   }
 }

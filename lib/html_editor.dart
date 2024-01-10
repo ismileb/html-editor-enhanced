@@ -78,7 +78,8 @@ enum ButtonType {
   redo,
   help,
   copy,
-  paste
+  paste,
+  customEdit
 }
 
 /// Returns the type of dropdown changed in the `onDropdownChanged` function

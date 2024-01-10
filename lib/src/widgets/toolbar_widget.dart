@@ -1758,7 +1758,7 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
               t.picture ||
               t.link ||
               t.hr ||
-              t.table)) {
+              t.table|| t.customAdd)) {
         toolbarChildren.add(ToggleButtons(
           constraints: BoxConstraints.tightFor(
             width: widget.htmlToolbarOptions.toolbarItemHeight - 2,
@@ -2598,6 +2598,14 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
                   true;
               if (proceed) {
                 widget.controller.insertHtml('<hr/>');
+              }
+            }
+            if (t.getIcons()[index].icon == Icons.dashboard_customize) {
+              var proceed = await widget.htmlToolbarOptions.onButtonPressed
+                      ?.call(ButtonType.customEdit, null, null) ??
+                  true;
+              if (proceed) {
+                widget.controller.insertHtml('<h1>Beingggg Addded</h1>');
               }
             }
           },
