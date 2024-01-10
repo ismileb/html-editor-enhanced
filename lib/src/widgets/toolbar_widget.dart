@@ -1022,6 +1022,75 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
           ));
         }
       }
+      if(t is CustomWidget){
+        toolbarChildren.add(ToggleButtons(
+          constraints: BoxConstraints.tightFor(
+            width: widget.htmlToolbarOptions.toolbarItemHeight - 2,
+            height: widget.htmlToolbarOptions.toolbarItemHeight - 2,
+          ),
+          color: widget.htmlToolbarOptions.buttonColor,
+          selectedColor: widget.htmlToolbarOptions.buttonSelectedColor,
+          fillColor: widget.htmlToolbarOptions.buttonFillColor,
+          focusColor: widget.htmlToolbarOptions.buttonFocusColor,
+          highlightColor: widget.htmlToolbarOptions.buttonHighlightColor,
+          hoverColor: widget.htmlToolbarOptions.buttonHoverColor,
+          splashColor: widget.htmlToolbarOptions.buttonSplashColor,
+          selectedBorderColor:
+          widget.htmlToolbarOptions.buttonSelectedBorderColor,
+          borderColor: widget.htmlToolbarOptions.buttonBorderColor,
+          borderRadius: widget.htmlToolbarOptions.buttonBorderRadius,
+          borderWidth: widget.htmlToolbarOptions.buttonBorderWidth,
+          renderBorder: widget.htmlToolbarOptions.renderBorder,
+          textStyle: widget.htmlToolbarOptions.textStyle,
+          onPressed: (int index) async {
+            void updateStatus() {
+              setState(mounted, this.setState, () {
+                _fontSelected[index] = !_fontSelected[index];
+              });
+            }
+
+
+              var proceed = await widget.htmlToolbarOptions.onButtonPressed
+                  ?.call(ButtonType.bold, _fontSelected[index],
+                  updateStatus) ??
+                  true;
+              if (proceed) {
+                widget.controller.execCommand('bold');
+                updateStatus();
+              }
+
+
+               proceed = await widget.htmlToolbarOptions.onButtonPressed
+                  ?.call(ButtonType.italic, _fontSelected[index],
+                  updateStatus) ??
+                  true;
+              if (proceed) {
+                widget.controller.execCommand('italic');
+                updateStatus();
+              }
+
+               proceed = await widget.htmlToolbarOptions.onButtonPressed
+                  ?.call(ButtonType.underline, _fontSelected[index],
+                  updateStatus) ??
+                  true;
+              if (proceed) {
+                widget.controller.execCommand('underline');
+                updateStatus();
+
+            }
+
+               proceed = await widget.htmlToolbarOptions.onButtonPressed
+                  ?.call(ButtonType.clearFormatting, null, null) ??
+                  true;
+              if (proceed) {
+                widget.controller.execCommand('removeFormat');
+              }
+
+          },
+          isSelected: _fontSelected,
+          children: [t.widget!],
+        ));
+      }
       if (t is ColorButtons && (t.foregroundColor || t.highlightColor)) {
         toolbarChildren.add(ToggleButtons(
           constraints: BoxConstraints.tightFor(
