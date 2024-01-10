@@ -35,6 +35,7 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
   /// List that controls which [ToggleButtons] are selected for
   /// bold/italic/underline/clear styles
   List<bool> _fontSelected = List<bool>.filled(4, false);
+  List<Widget> _widget = List<Widget>.generate(4, (index) => Container());
 
   /// List that controls which [ToggleButtons] are selected for
   /// strikthrough/superscript/subscript
@@ -99,6 +100,9 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
       if (t is FontButtons) {
         _fontSelected = List<bool>.filled(t.getIcons1().length, false);
         _miscFontSelected = List<bool>.filled(t.getIcons2().length, false);
+      }
+      if (t is CustomWidget) {
+        _widget = [t.widget!];
       }
       if (t is ColorButtons) {
         _colorSelected = List<bool>.filled(t.getIcons().length, false);

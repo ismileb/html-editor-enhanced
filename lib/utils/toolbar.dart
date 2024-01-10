@@ -64,6 +64,7 @@ class FontButtons extends Toolbar {
     return icons;
   }
 }
+
 class CustomWidget extends Toolbar {
   final Icon? icon;
   final Widget? widget;
